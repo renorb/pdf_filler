@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name    = 'pdf_filler'
-    gem.version = '0.1.0'
+    #gem.version = '0.1.1'  # In version file
     gem.date    = '2009-08-25'
 
     gem.summary = "A Rails plugin to fill a PDF form using RJB and iText."
