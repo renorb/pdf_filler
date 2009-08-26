@@ -1,0 +1,4 @@
+/doc
+/coverage
+.DS_Store
+pdf_filler-*.gem

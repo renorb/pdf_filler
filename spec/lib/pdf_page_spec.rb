@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 describe 'Page' do
   
   it 'should create the page and write to the output directory' do    
-    page = GBDev::PDF::Page.new(File.expand_path(File.dirname(__FILE__) + '/../templates/certificate_template.pdf'))
+    page = RenoRB::PDF::Page.new(File.expand_path(File.dirname(__FILE__) + '/../templates/certificate_template.pdf'))
     page.set_text_field(:full_name, 'Wes Hays')
     page.save_to(File.expand_path(File.dirname(__FILE__) + '/../output/wes_hays.pdf'))
     File.exist?(File.dirname(__FILE__) + '/../output/wes_hays.pdf').should be_true
@@ -21,28 +21,28 @@ describe 'Page' do
     fields = page.get_pdf_fields
     
     fields.has_key?(:full_name).should be_true
-    fields[:full_name].should == GBDev::PDF::Page::TEXT_FIELD
+    fields[:full_name].should == RenoRB::PDF::Page::TEXT_FIELD
     
     fields.has_key?(:home_owner).should be_true
-    fields[:home_owner].should == GBDev::PDF::Page::RADIO_BUTTON
+    fields[:home_owner].should == RenoRB::PDF::Page::RADIO_BUTTON
     
     fields.has_key?(:newsletter).should be_true
-    fields[:newsletter].should == GBDev::PDF::Page::CHECK_BOX
+    fields[:newsletter].should == RenoRB::PDF::Page::CHECK_BOX
     
     fields.has_key?(:car_types).should be_true
-    fields[:car_types].should == GBDev::PDF::Page::LIST
+    fields[:car_types].should == RenoRB::PDF::Page::LIST
     
     fields.has_key?(:sibling_count).should be_true
-    fields[:sibling_count].should == GBDev::PDF::Page::COMBO_BOX   
+    fields[:sibling_count].should == RenoRB::PDF::Page::COMBO_BOX   
     
     # fields.has_key?(:owner_signature).should be_true
-    # fields[:owner_signature].should == GBDev::PDF::Page::SIGNATURE
+    # fields[:owner_signature].should == RenoRB::PDF::Page::SIGNATURE
     #
     # fields.has_key?(:submit_button).should be_true
-    # fields[:submit_button].should == GBDev::PDF::Page::PUSH_BUTTON
+    # fields[:submit_button].should == RenoRB::PDF::Page::PUSH_BUTTON
     #
     # fields.has_key?(:photo).should be_true
-    # fields[:photo].should == GBDev::PDF::Page::IMAGE     
+    # fields[:photo].should == RenoRB::PDF::Page::IMAGE     
   end
    
   it 'should find all the valid states for the check box' do

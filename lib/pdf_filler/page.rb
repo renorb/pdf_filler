@@ -1,4 +1,4 @@
-module GBDev
+module RenoRB
   
   module PDF
   
@@ -44,23 +44,23 @@ module GBDev
 
           case(form.getFieldType(key))
             when AcroFields.FIELD_TYPE_CHECKBOX
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::CHECK_BOX
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::CHECK_BOX
             when AcroFields.FIELD_TYPE_COMBO
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::COMBO_BOX
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::COMBO_BOX
             when AcroFields.FIELD_TYPE_LIST 
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::LIST
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::LIST
             when AcroFields.FIELD_TYPE_NONE 
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::NONE
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::NONE
             when AcroFields.FIELD_TYPE_PUSHBUTTON
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::PUSH_BUTTON
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::PUSH_BUTTON
             when AcroFields.FIELD_TYPE_RADIOBUTTON
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::RADIO_BUTTON
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::RADIO_BUTTON
             when AcroFields.FIELD_TYPE_SIGNATURE
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::SIGNATURE
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::SIGNATURE
             when AcroFields.FIELD_TYPE_TEXT
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::TEXT_FIELD
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::TEXT_FIELD
             else 
-              @pdf_fields[key.to_string().to_sym] = GBDev::PDF::Page::UNKNOWN
+              @pdf_fields[key.to_string().to_sym] = RenoRB::PDF::Page::UNKNOWN
           end
         end
         
@@ -159,21 +159,21 @@ module GBDev
             end
 
             case(fields[key])
-              when GBDev::PDF::Page::CHECK_BOX
+              when RenoRB::PDF::Page::CHECK_BOX
                 self.set_checkbox(key, object.send(value))
-              when GBDev::PDF::Page::COMBO_BOX
+              when RenoRB::PDF::Page::COMBO_BOX
                 #self.set_combobox(key, object.send(value))
-              when GBDev::PDF::Page::LIST
+              when RenoRB::PDF::Page::LIST
                 #self.set_list(key, object.send(value))
-              when GBDev::PDF::Page::NONE
+              when RenoRB::PDF::Page::NONE
                 #self.set_none(key, object.send(value))
-              when GBDev::PDF::Page::PUSH_BUTTON
+              when RenoRB::PDF::Page::PUSH_BUTTON
                 #self.set_push_button(key, object.send(value))
-              when GBDev::PDF::Page::RADIO_BUTTON
+              when RenoRB::PDF::Page::RADIO_BUTTON
                 self.set_radio_button(key, object.send(value))
-              when GBDev::PDF::Page::SIGNATURE
+              when RenoRB::PDF::Page::SIGNATURE
                 self.set_signature_field(key, object.send(value))
-              when GBDev::PDF::Page::TEXT_FIELD
+              when RenoRB::PDF::Page::TEXT_FIELD
                 self.set_text_field(key, object.send(value))
             end            
             
@@ -237,10 +237,10 @@ module GBDev
       end
   
       
-      include GBDev::Utils::PrivateMethods
+      include RenoRB::Utils::PrivateMethods
       
     end # End Page
 
   end # End PDF
 
-end # End GBDev
+end # End RenoRB

@@ -1,4 +1,4 @@
-module GBDev #:nodoc: all
+module RenoRB #:nodoc: all
 
   module Utils
     
@@ -18,7 +18,7 @@ module GBDev #:nodoc: all
     
     # Include these controller methods to prompt the user to download the PDF.
     #
-    # * include GBDev::Utils::ControllerMethods
+    # * include RenoRB::Utils::ControllerMethods
     module ControllerMethods
       
       # Used to display the PDF without saving it to disk.

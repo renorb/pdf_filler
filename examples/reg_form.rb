@@ -4,7 +4,7 @@ require 'ruby-debug'
 require 'pp'
 
 template_file = 'RegFormTemplate.pdf'
-reg_form = PDFPage(template_file)     # Same as GBDev::PDF::Page.new(template_file)
+reg_form = PDFPage(template_file)     # Same as RenoRB::PDF::Page.new(template_file)
 
 
 # Demo 1  :  Show fields and the possible fields states

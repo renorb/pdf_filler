@@ -1,4 +1,4 @@
-module GBDev
+module RenoRB
   
   module PDF
   
@@ -11,7 +11,7 @@ module GBDev
       
       # Add a page to the book
       #
-      # * new_page - The page object of type GBDev::PDF::Page
+      # * new_page - The page object of type RenoRB::PDF::Page
       def add_page(new_page)
         @pages << new_page
       end
@@ -85,10 +85,10 @@ module GBDev
         return baos.toByteArray()
       end      
       
-      include GBDev::Utils::PrivateMethods
+      include RenoRB::Utils::PrivateMethods
       
     end # End Filler
 
   end # End PDF
 
-end # End GBDev
+end # End RenoRB

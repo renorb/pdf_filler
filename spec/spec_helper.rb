@@ -42,7 +42,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'pdf_filler'
 
 
-module GBDev
+module RenoRB
   module TestData
     module Addresses
       def create_corpus!
@@ -69,7 +69,7 @@ Spec::Runner.configure do |config|
     class Address < ActiveRecord::Base
       acts_as_pdf_db_mapper
       belongs_to :client      
-      extend GBDev::TestData::Addresses
+      extend RenoRB::TestData::Addresses
     end
     
     class ClientAddress < ActiveRecord::Base

@@ -1,6 +1,6 @@
 require 'active_record'
 
-module GBDev #:nodoc:
+module RenoRB #:nodoc:
   module PDF #:nodoc:
     module Acts #:nodoc:
       module PDFDBMapper # :nodoc:
@@ -69,6 +69,6 @@ module GBDev #:nodoc:
       end # PDFDBMapper
     end # Acts
   end # PDF
-end # GBDev
+end # RenoRB
 
-ActiveRecord::Base.send(:include, GBDev::PDF::Acts::PDFDBMapper)
+ActiveRecord::Base.send(:include, RenoRB::PDF::Acts::PDFDBMapper)

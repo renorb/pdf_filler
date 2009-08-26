@@ -31,20 +31,20 @@ module Kernel
   # Therefore, 
   # * PDFPage(template)
   # and
-  # * GBDev::PDF::Page.new(template)
+  # * RenoRB::PDF::Page.new(template)
   # are the same thing.
   def PDFPage(template)
-    GBDev::PDF::Page.new(template)
+    RenoRB::PDF::Page.new(template)
   end
   
   # A shortcut kernel method for creating a new PDF Book without having to specify the full path to the book.
   # Therefore, 
   # * PDFBook()
   # and
-  # * GBDev::PDF::Book.new
+  # * RenoRB::PDF::Book.new
   # are the same thing.  
   def PDFBook()
-    GBDev::PDF::Book.new
+    RenoRB::PDF::Book.new
   end  
   
 end
