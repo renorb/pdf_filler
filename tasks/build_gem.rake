@@ -5,15 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name    = 'pdf_filler'
-    gem.version = '0.0.2'
-    gem.date    = '2009-07-24'
+    gem.version = '0.1.0'
+    gem.date    = '2009-08-25'
 
     gem.summary = "A Rails plugin to fill a PDF form using RJB and iText."
     gem.description = "PDF Filler makes it easy to file your PDFs."
 
-    gem.authors  = ['Wes Hays', 'Darrne Johnson']
-    gem.email    = ['weshays@gbdev.com', 'djohnson@gbdev.com']
-    gem.homepage = 'http://wiki.github.com/gbdev/pdf-filler'
+    gem.authors  = ['Reno Ruby Group']
+    gem.email    = ['renorb@renorb.org']
+    gem.homepage = 'http://wiki.github.com/renorb/pdf_filler'
 
     gem.has_rdoc = true
     gem.rdoc_options << '--title' << gem.name << '--main' << 'README.rdoc' << '--line-numbers' << '--inline-source'
