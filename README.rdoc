@@ -1,0 +1,117 @@
+= pdf_filler
+
+The <b>pdf_filler</b> Rails plugin makes it easy to update existing PDFs that have form fields defined. 
+Rather then building PDFs in Ruby using something like PDF-Writer, it is much easier to create a PDF in Acrobat, 
+define fields, and update those fields using pdf_filler. An example would be a First/Last name field on a PDF that is possible to update.
+
+
+== Requirements
+
+This plugin requires RJB (Ruby Java Bridge), so you will need to set your JAVA_HOME environment variable to point your installation of Java.  
+
+If your JAVA_HOME environment variable is not setup correctly you will get something like:
+
+  
+  Building native extensions.  This could take a while...
+  ERROR:  Error installing pdf_filler-0.1.0.gem:
+          ERROR: Failed to build gem native extension.
+
+  /opt/local/bin/ruby extconf.rb
+  *** extconf.rb failed ***
+  Could not create Makefile due to some reason, probably lack of
+  necessary libraries and/or headers.  Check the mkmf.log file for more
+  details.  You may need configuration options.
+
+  Provided configuration options:
+          --with-opt-dir
+          --without-opt-dir
+          --with-opt-include
+          --without-opt-include=${opt-dir}/include
+          --with-opt-lib
+          --without-opt-lib=${opt-dir}/lib
+          --with-make-prog
+          --without-make-prog
+          --srcdir=.
+          --curdir
+          --ruby=/opt/local/bin/ruby
+  extconf.rb:45: JAVA_HOME is not set. (RuntimeError)
+
+  Gem files will remain installed in /opt/local/lib/ruby/gems/1.8/gems/rjb-1.1.7 for inspection.
+  Results logged to /opt/local/lib/ruby/gems/1.8/gems/rjb-1.1.7/ext/gem_make.out
+
+
+
+<b>On my Mac I set JAVA_HOME to be "/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home".</b>
+
+
+== Installing
+
+The recommended method to enable pdf_filler in your project is adding the pdf_filler gem to your environment. Add the following code to your Rails configuration in <tt>config/environment.rb</tt>:
+
+  Rails::Initializer.run do |config|
+    ...
+    config.gem 'gbdev-pdf_filler', :lib => 'pdf_filler', source => 'http://gems.github.com/'
+  end
+
+Run <tt>sudo rake gems:install</tt> to install the gem.
+
+Another alternative is to install pdf_filler as a Rails plugin:
+
+  script/plugin install git://github.com/gbdev/pdf_filler.git
+
+
+== Usage
+
+1. You will need a PDF that has form fields to fill.
+
+2. A writable directory to store the generated PDFs.
+
+3. For a single page use the Page object?
+
+    // ** Single page **
+    page = GBDev::PDF::Page.new('/path/to/template.pdf')
+    page.set_text(:full_name, 'Wes Hays')
+    page.save_to('/path/to/save.pdf')
+  
+4. For a collection of pages to be added to a single PDF use a Book object.
+
+    book = GBDev::PDF::Book.new
+  
+    page1 = GBDev::PDF::Page.new('/path/to/template1.pdf')
+    page1.set_text(:full_name, 'Wes Hays')
+  
+    page2 = GBDev::PDF::Page.new('/path/to/template2.pdf')
+    page2.set_text(:full_name, 'Darren Johnson')
+  
+    book.add_page(page1)
+    book.add_page(page2)
+  
+    book.save_to('/page/to/book.pdf')
+  
+5. Rather then setting all the fields manually a PDF can be mapped to an ActiveRecord model. 
+   The model must use the acts_as_pdf_db_mapper module. (<b><i>See rdocs on acts_as_pdf_db_mapper for more options</i></b>)
+
+    class User < ActiveRecord::Base
+      ...
+      acts_as_pdf_db_mapper
+      ...
+    end
+    
+    user = User.first
+    page = GBDev::PDF::Page.new('/path/to/template1.pdf')
+    page.map_to_object(user)
+    page.save_to('/path/to/save.pdf)
+    
+
+Note: You can use the shorter kernel methods PDFPage instead of GBDev::PDF::Page.new.  The same goes for PDFBook instead of GBDev::PDF::Book.new.
+
+Example:
+  
+  page = PDFPage('/path/to/template.pdf')
+  book = PDFBook()
+
+
+== License
+
+This plugin is released under the MIT license. Please contact weshays (http://github.com/weshays) 
+or djohnson (http://github.com/djohnson) for any questions.
